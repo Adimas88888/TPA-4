@@ -9,7 +9,10 @@ INSERT INTO detail_order (id_orderFK, id_barangFK, jumlah_beli, kategori_order) 
 (111, 102, 3, 'proses checkout');
 
 -- //Melihat 3 produk yang paling sering dibeli oleh pelanggan.
-SELECT * FROM detail_order ORDER BY jumlah_beli DESC LIMIT 3 ;
+SELECT detail_order.id_orderFK, detail_order.id_barangFK , detail_order.jumlah_beli,barang.nama_barang
+FROM detail_order
+INNER JOIN barang ON detail_order.id_barangFK= barang.id_barang
+ORDER BY jumlah_beli DESC LIMIT 3 ;
 
 -- //Melihat Kategori barang yang paling banyak barangnya.
 SELECT nama_barang, jenis_barang, MAX(stock_barang) FROM barang;
